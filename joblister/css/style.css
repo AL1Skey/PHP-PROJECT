@@ -1,0 +1,39 @@
+body{
+    width: 70vw;
+    margin: auto;
+}
+
+/*AUX*/
+.brand{
+    font-weight: 700;
+    font-size: 33px;
+}
+.navbarmain{
+    font-weight: 600;
+    font-size: 20px;
+
+}
+    .nav-item a:hover{
+        background-color: grey;
+        color: white;
+    }
+
+/*UTILITY*/
+.text-brand{
+    color: rgb(169, 169, 226);
+}
+.text-gray{
+    color: rgb(187, 175, 175);
+}
+.bg-gray{
+    background: #f0f0f0;
+}
+.border-radius{
+    border-radius: 5px;
+}
+.flex-4{
+    flex: 4;
+}
+.flex-1{
+    flex: 1;
+}
