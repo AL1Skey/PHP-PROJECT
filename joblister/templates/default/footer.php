@@ -1,5 +1,5 @@
-    <footer>
-        SOMETING
+    <footer class="border-top mt-5">
+        <p>&copy; Joblister</p>
     </footer>
     
     
