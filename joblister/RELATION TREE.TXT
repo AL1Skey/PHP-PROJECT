@@ -1,0 +1,81 @@
+SYMBOL:
+| = parent of
+v
+
+! = used
+? = partially used
+
+FILE RELATIONSHIP:
+
+CONFIG:(AUTOLOAD REQUIREMENT CLASS)
+
+    lib/*    
+    helper/redirect.php
+    config.php
+       |
+       v
+    init.php
+
+INDEX:(CORE PAGE)     
+ 
+ lib/*?    
+ helper/redirect.php               templates/default/footer!     
+    config.php!                     templates/default/nav!
+       |                                |
+       v                                v
+    init.php!                        frontpage.php!
+       \                                /
+        \                              /
+         \                            /
+          \                          /
+           \                        /
+            v                      v
+                    index.php
+
+EDIT:(EDIT JOB INFO PAGE)
+
+ lib/*!   
+ helper/redirect.php!              templates/default/footer!     
+    config.php!                     templates/default/nav!
+       |                                |
+       v                                v
+    init.php!                        edit-page.php!
+       \                                /
+        \                              /
+         \                            /
+          \                          /
+           \                        /
+            v                      v
+                    edit.php
+
+CREATE:(CREATE JOB DATA)
+
+ lib/*!    
+ helper/redirect.php!              templates/default/footer!     
+    config.php!                     templates/default/nav!
+       |                                |
+       v                                v
+    init.php!                        create-page.php!
+       \                                /
+        \                              /
+         \                            /
+          \                          /
+           \                        /
+            v                      v
+                    create.php
+
+JOB:(SHOW JOB INFO)
+
+ lib/*!    
+ helper/redirect.php!              templates/default/footer!     
+    config.php!                     templates/default/nav!
+       |                                |
+       v                                v
+    init.php!                        job-single.php!
+       \                                /
+        \                              /
+         \                            /
+          \                          /
+           \                        /
+            v                      v
+                    job.php

@@ -31,26 +31,66 @@
 
             return $jobRow;
         }
-
-        
-        public function getStructure(){
-            $this->db->query("SELECT * FROM jobs");
-
-            $structure = array_keys($this->db->resultSet());
-
-            return $structure;
-        }
-        public function createJob(
-            $id=null,$company=null,$job_title=null,$desc=null,$salary=null,$location=null,$user=null,$email=null
-            )
-            {
-            $structure = $this->getStructure();
-
+        //CREATE JOB
+        public function createJob($data)
+        {        
+            //INSERT QUERY
             $this->db->query(
-                "INSERT INTO jobs($structure) VALUE(NULL,$id,$company,$job_title,$desc,$salary,$location,$user,$email)"
+                "INSERT INTO jobs(category_id,job_title,company,description,location,salary,contact_user,contact_email) VALUE(:category_id,:job_title,:company,:description,:location,:salary,:contact_user,:contact_email)"
             );
+            //BIND DATA
+            $this->db->bind(":category_id", $data['category_id']);
+            $this->db->bind(":job_title", $data['job_title']);
+            $this->db->bind(":company", $data['company']);
+            $this->db->bind(":description", $data['description']);
+            $this->db->bind(":location", $data['location']);
+            $this->db->bind(":salary", $data['salary']);
+            $this->db->bind(":contact_user", $data['contact_user']);
+            $this->db->bind(":contact_email", $data['contact_email']);
             
+            //EXECUTE
+            if($this->db->execute()){
+                return true;
             }
+            else{
+                return false;
+            }
+        }
+
+        public function updateJob($id,$data){
+            $this->db->query(
+                "UPDATE jobs SET company = :company, category_id = :category_id, job_title = :job_title, description = :description, location = :location, salary = :salary, contact_user = :contact_user, contact_email = :contact_email WHERE id = :id"
+            );
+            //BIND DATA
+            $this->db->bind(":category_id", $data['category_id']);
+            $this->db->bind(":job_title", $data['job_title']);
+            $this->db->bind(":company", $data['company']);
+            $this->db->bind(":description", $data['description']);
+            $this->db->bind(":location", $data['location']);
+            $this->db->bind(":salary", $data['salary']);
+            $this->db->bind(":contact_user", $data['contact_user']);
+            $this->db->bind(":contact_email", $data['contact_email']);
+            $this->db->bind(":id",$id);
+
+            if($this->db->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
+        public function deleteJob($id){
+            $this->db->query("DELETE FROM jobs WHERE jobs.id = :id");
+            $this->db->bind(":id",$id);
+            if($this->db->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
         public function getCategories(){
             $this->db->query(
                 'SELECT * FROM categories'

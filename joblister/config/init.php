@@ -7,8 +7,12 @@ INCLUDE CONTACT
 ........
 INCLUDE SOMETHING
 */
+//SESSION START
+session_start();
 
 require_once 'config.php';
+//INCLUDE HELPERS
+require_once 'helper/redirect.php';
 
 //AUTOLOADER
 spl_autoload_register(function ($class) {

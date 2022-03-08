@@ -1,23 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-
-
-    <!-- CUSTOM CSS -->
-    <link rel="stylesheet" href="css/style.css">
-
-    <title>Joblister</title>
-
-</head>
-
 <?php include_once 'default/nav.php';?>
 <div class="container mt-2 p-2">
     <h3 class="page-header">
@@ -40,6 +20,19 @@
             <strong>Contact Mail: </strong> <?php echo $job->contact_email;?>
         </li>
     </ul> 
+    
+    <br><br>
+    <a href="index.php">Go Back</a>
+    <br><br>
+
+    <div class=" bg-gray card card-body flex-row ">
+        <a href="edit.php?id=<?php echo $job->id;?>" class="btn btn-secondary">Edit</a>
+
+        <form action="job.php" method="post" style="display:inline">
+            <input type="hidden" name="del_id" value="<?php echo $job->id;?>">
+            <input type="submit" class="btn btn-danger" value="Delete">
+        </form>
+    </div>
 
 </div>
 

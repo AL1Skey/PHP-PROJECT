@@ -28,14 +28,14 @@
                                     $this->pass,
                                     $options /*options
                                     A key=>value array of driver-specific connection options.
-                                    HYPOTHESIS:
+                                    ASSUMPTION:
                                     OPTION NEED FOR ADDING REQUIREMENT
                                     OPTION HAS THIS REQUIREMENT:
                                     1.)PERSISTENCE CONNECTION
                                     2.)THROW ERROR IF ERROR(DEFAULT IS IGNORE)
                                     IF REQUIREMENT NOT MEET
                                     THROW ERROR
-                                    -->END OF HYPOTHESIS
+                                    -->END OF ASSUMPTION
                                     */
                                     );
             } catch(PDOException $e){
@@ -43,10 +43,11 @@
             }
         }
 
+        //PREPARE MYSQL CODE TO EXECUTE LATER
         public function query($query){
             $this->stmt = $this->dbh->prepare($query);
         }
-
+        //BIND VALUE TO PARAMETER
         public function bind($param,$value,$type=null){
             if(is_null($type)){
                 
@@ -67,6 +68,7 @@
             $this->stmt->bindValue($param,$value,$type);
         }
 
+        //EXECUTE THE MYSQL CODE IN QUERY FUNCTION
         public function execute(){
             return $this->stmt->execute();
         }
